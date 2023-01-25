@@ -15,7 +15,7 @@ pipeline{
 
         stage ('Sonar Analysis') {
             environment {
-                scannerHome = tool 'java_sonarscaner'  //scanner name configured for slave
+                scannerHome = tool 'java-sonarscanner'  //scanner name configured for slave
             }
             steps {
                 echo '-----------Sonar analysis started-----------'
