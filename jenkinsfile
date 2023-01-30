@@ -4,6 +4,9 @@ pipeline{
             label 'jenkins-slave'
         }
     }
+    environment {
+        PATH = "/opt/apache-maven-3.8.7/bin:$PATH"
+    }
     stages {
         stage('build') {
             steps{
@@ -13,9 +16,9 @@ pipeline{
             }
         }
 
-        stage ('Sonar Analysis') {
+        stage('Sonar Analysis') {
             environment {
-                scannerHome = tool 'java-sonarscanner'  //scanner name configured for slave
+                scannerHome = tool 'java-sonarscanner'
             }
             steps {
                 echo '-----------Sonar analysis started-----------'
