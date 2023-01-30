@@ -1,4 +1,5 @@
-pipeline{
+/* groovylint-disable-next-line CompileStatic */
+pipeline {
     agent {
         node {
             label 'jenkins-slave'
@@ -13,6 +14,14 @@ pipeline{
                 echo '------build started---------'
                 sh 'mvn clean install -Dmaven.test.skip=true'
                 echo '------build completed ---------'
+            }
+        }
+
+        stage('Unit Test') {
+            steps {
+                echo '<--------------- Unit Testing started  --------------->'
+                sh 'mvn surefire-report:report'
+                echo '<------------- Unit Testing stopped  --------------->'
             }
         }
 
